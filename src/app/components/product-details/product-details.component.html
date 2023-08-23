@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <mat-card class="product-card">
+          <img mat-card-image [src]="product.image" alt="{{ product.title }}" class="product-image">
+          <mat-card-content class="product-details">
+            <h2 mat-card-title>{{ product.title }}</h2>
+            <p mat-card-subtitle>{{ product.description }}</p>
+            <p class="product-price">Price: {{ product.price }}</p>
+            <p class="product-rating">Rating: {{ product.rating.rate }} ({{ product.rating.count }} ratings)</p>
+          </mat-card-content>
+          <mat-card-actions class="product-actions">
+            <button mat-button class="product-action-button">Add to Cart</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>

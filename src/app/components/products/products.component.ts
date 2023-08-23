@@ -10,6 +10,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ProductsComponent implements OnInit{
 
   products: IProduct[]=[];
+  router: any;
   constructor(private productService: ProductsService){}
 
   ngOnInit(){

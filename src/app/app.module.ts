@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     NavigationComponent,
     ProductsComponent,
     ShoppingCartComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,
