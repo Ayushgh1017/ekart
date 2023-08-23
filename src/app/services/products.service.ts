@@ -29,9 +29,6 @@ export class ProductsService {
     )
   }
 
-  getProducts():IProduct[]{
-    return this.products;
-  }
 
   getProductById(id: string): Observable<IProduct> {
     return this.http.get<IProduct>(`${this.apiUrl}/${id}`).pipe(

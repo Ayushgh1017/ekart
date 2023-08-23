@@ -11,6 +11,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ShippingDetailsComponent } from './components/checkout/shipping-details/shipping-details.component';
+import { PaymentDetailsComponent } from './components/checkout/payment-details/payment-details.component';
+import { OrderSummaryComponent } from './components/checkout/order-summary/order-summary.component';
+import { PaymentSuccessDialogComponentComponent } from './components/checkout/payment-success-dialog-component/payment-success-dialog-component.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +25,11 @@ import { ProductDetailsComponent } from './components/product-details/product-de
     ProductsComponent,
     ShoppingCartComponent,
     ProductDetailsComponent,
+    CheckoutComponent,
+    ShippingDetailsComponent,
+    PaymentDetailsComponent,
+    OrderSummaryComponent,
+    PaymentSuccessDialogComponentComponent,
   ],
   imports: [
     BrowserModule,

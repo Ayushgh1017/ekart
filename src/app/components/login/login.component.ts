@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,7 +15,7 @@ export class LoginComponent {
     password: new FormControl(null, Validators.required),
   });
 
-  constructor(private authService: AuthService, private router : Router){};
+  constructor(private authService: AuthService, private router:Router) { }
 
   submitForm(){
     if (this.form.invalid) {

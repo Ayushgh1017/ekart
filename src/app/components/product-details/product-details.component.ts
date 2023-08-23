@@ -15,7 +15,6 @@ export class ProductDetailsComponent implements OnInit{
   ngOnInit(){
     this.acRoute.paramMap.subscribe(param=>{
       this.id = param.get('id');
-      console.log(this.id);
     })
     if(this.id){
       this.productService.getProductById(this.id!).subscribe({
@@ -24,7 +23,7 @@ export class ProductDetailsComponent implements OnInit{
           console.log(product);
         },
         error: error =>{
-
+          console.log("Can find the product",error);
         }
       }
       );

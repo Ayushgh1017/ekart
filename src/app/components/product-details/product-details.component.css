@@ -6,13 +6,21 @@
   }
   
   .product-image {
-    max-width: 100%;
+    max-width: 45%;
     height: auto;
+    
+    margin: auto;
+  }
+
+  .product-details {
+    text-align: center;
     margin-bottom: 20px;
   }
   
-  .product-details {
-    text-align: center;
+  .product-category {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
   }
   
   .product-title {
@@ -62,4 +70,5 @@
 
   a{
     color: white;
+    text-decoration: none;
   }
