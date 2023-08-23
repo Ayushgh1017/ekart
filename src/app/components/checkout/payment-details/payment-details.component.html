@@ -1,0 +1,14 @@
+<form [formGroup]="paymentForm" (ngSubmit)="onSubmitPayment()">
+    <mat-form-field>
+      <input matInput id="card-number" formControlName="cardNumber" required>
+      <mat-label>Card Number</mat-label>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput id="expiration-date" formControlName="expirationDate" required>
+      <mat-label>Expiration Date</mat-label>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput id="cvv" formControlName="cvv" required>
+      <mat-label>CVV</mat-label>
+    </mat-form-field>
+  </form>
