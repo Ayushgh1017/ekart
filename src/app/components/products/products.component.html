@@ -1,1 +1,23 @@
-<p>products works!</p>
+<div class="container">
+    <div class="card-container">
+      <div class="card" *ngFor="let product of products">
+        <mat-card>
+          <mat-card-header>
+            <div class="img"><img mat-card-image src="{{ product.image }}" alt="{{ product.title }}"></div>
+          </mat-card-header>
+          <mat-card-content class="card-content">
+            <mat-card-title>{{ product.title }}</mat-card-title>
+            <mat-card-subtitle>{{ product.price }}</mat-card-subtitle>
+            <p class="description">{{ product.description }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <div class="button-container">
+              <button mat-button class="buy-button"><a>Buy Now</a></button>
+              <button mat-button class="cart-button"><a>Add to Cart</a></button>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  
