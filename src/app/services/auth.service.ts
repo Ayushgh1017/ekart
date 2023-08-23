@@ -7,7 +7,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly TOKEN_PREFIX = 'authToken_'; // Prefix for token storage
+  private readonly TOKEN_PREFIX = 'authToken_'; 
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this._isLoggedIn$.asObservable();
 
@@ -30,7 +30,8 @@ export class AuthService {
   
     if (user) {
       localStorage.setItem('loggedInUser', username);
-      localStorage.setItem(this.getLocalStorageTokenKey(username), 'dummyToken'); // Replace with your actual token
+      const token = user.token;
+      localStorage.setItem(this.getLocalStorageTokenKey(username), token); // Replace with your actual token
   
       this._isLoggedIn$.next(true);
   
