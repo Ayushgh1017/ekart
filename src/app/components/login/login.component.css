@@ -1,0 +1,19 @@
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .form-container mat-card-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-container mat-form-field {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .form-container button {
+    width: 100%;
+  }
