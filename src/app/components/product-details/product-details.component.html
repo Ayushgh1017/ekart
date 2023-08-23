@@ -6,11 +6,11 @@
           <mat-card-content class="product-details">
             <h2 mat-card-title>{{ product.title }}</h2>
             <p mat-card-subtitle>{{ product.description }}</p>
-            <p class="product-price">Price: {{ product.price }}</p>
+            <p class="product-price">Price: ${{ product.price }}</p>
             <p class="product-rating">Rating: {{ product.rating.rate }} ({{ product.rating.count }} ratings)</p>
           </mat-card-content>
           <mat-card-actions class="product-actions">
-            <button mat-button class="product-action-button">Add to Cart</button>
+            <button mat-button class="product-action-button"><a>Add to Cart</a></button>
           </mat-card-actions>
         </mat-card>
       </div>
