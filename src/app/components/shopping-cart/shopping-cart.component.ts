@@ -11,7 +11,7 @@ import { ProductsService } from 'src/app/services/products.service';
 export class ShoppingCartComponent {
 
   product!: IProduct;
-  products: IProduct[]=[]; 
+  products: IProduct[]=[];
   constructor(private productService: ProductsService,private cartService: CartService){}
 
   ngOnInit(){
@@ -22,7 +22,7 @@ export class ShoppingCartComponent {
         this.productService.getProductById(productId).subscribe({
           next: product => {
             const quantity = cartObj[productId];
-            product.quantity = quantity
+            product.quantity = quantity;
             this.products.push(product);
           },
           error: error => {
@@ -31,5 +31,19 @@ export class ShoppingCartComponent {
         });
       });
      }
+  }
+  addToCart(product: IProduct) {
+    product.quantity =  this.cartService.addToCart(product);
+    
+  }
+
+  removeFromCart(product: IProduct) {
+    product.quantity = this.cartService.removeFromCart(product);
+    if (product.quantity === 0) {
+      const index = this.products.findIndex(p => p.id === product.id);
+      if (index!== -1) {
+        this.products.splice(index, 1);
+      }
+    }
   }
 }
