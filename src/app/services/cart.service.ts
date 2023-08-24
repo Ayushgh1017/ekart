@@ -39,7 +39,7 @@ export class CartService {
           delete cart[productId]; 
         }
         localStorage.setItem('cart', JSON.stringify(cart));
-        return cart[productId] || 0;
+        return cart[productId] || 0; 
       }
     }
     return 0;

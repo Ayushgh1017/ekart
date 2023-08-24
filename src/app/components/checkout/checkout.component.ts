@@ -17,6 +17,9 @@ export class CheckoutComponent implements OnInit {
   shippingForm!: FormGroup;
   paymentForm!: FormGroup;
   quantity!: number;
+  delivery:number = 3;
+  tax:number = 2.5;
+  finalAmount:number = 0;
 
   constructor(private productService: ProductsService, private acRoute: ActivatedRoute, private fb: FormBuilder, private checkout:CheckoutService) {}
 
@@ -52,7 +55,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   makePayment(){
-    this.checkout.calculateAmount(this.products[0].price,this.quantity);
+    this.checkout.calculateTotalAmount(this.products[0],this.delivery,this.tax);
     localStorage.removeItem('cart');
     console.log("payment successfull");
   }
