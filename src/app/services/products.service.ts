@@ -11,7 +11,6 @@ import { catchError, map } from 'rxjs/operators';
 export class ProductsService {
 
   private apiUrl = 'https://fakestoreapi.com/products';
-  private products: IProduct[] = [];
 
   constructor(private http: HttpClient) {}
 

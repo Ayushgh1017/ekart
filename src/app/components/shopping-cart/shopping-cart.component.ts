@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { IProduct } from 'src/app/models/IProduct';
+import { CartService } from 'src/app/services/cart.service';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -7,4 +10,26 @@ import { Component } from '@angular/core';
 })
 export class ShoppingCartComponent {
 
+  product!: IProduct;
+  products: IProduct[]=[]; 
+  constructor(private productService: ProductsService,private cartService: CartService){}
+
+  ngOnInit(){
+     const cartObj = this.cartService.getCartObject();
+     if (cartObj){
+      const productIds = Object.keys(cartObj);
+      productIds.forEach(productId => {
+        this.productService.getProductById(productId).subscribe({
+          next: product => {
+            const quantity = cartObj[productId];
+            product.quantity = quantity
+            this.products.push(product);
+          },
+          error: error => {
+            console.log(`Can't find the product with ID ${productId}`, error);
+          }
+        });
+      });
+     }
+  }
 }

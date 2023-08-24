@@ -10,12 +10,12 @@
     </div>
     <div class="col-md-4">
       <h2>Product Information</h2>
-      <app-order-summary></app-order-summary>
+      <app-order-summary [products]="products"></app-order-summary>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <button mat-raised-button color="primary" routerLink="/payment">Make Order</button>
+      <button mat-raised-button color="primary" routerLink="/payment" (click)="makePayment()">Make Order</button>
     </div>
   </div>
 </div>

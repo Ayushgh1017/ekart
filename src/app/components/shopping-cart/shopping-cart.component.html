@@ -1,1 +1,17 @@
-<p>shopping-cart works!</p>
+<p>This is Cart</p>
+<div class="container">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let product of products">
+        <mat-card class="product-card">
+          <img mat-card-image [src]="product.image" [alt]="product.title">
+          <mat-card-content>
+            <h2 mat-card-title>{{ product.title }}</h2>
+            <p class="product-price">Price: ${{ product.price }}</p>
+            <p class="product-quantity">Quantity: {{ product.quantity }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>

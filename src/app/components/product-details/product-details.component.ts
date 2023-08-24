@@ -20,7 +20,6 @@ export class ProductDetailsComponent implements OnInit{
       this.productService.getProductById(this.id!).subscribe({
         next: product =>{
           this.product = product;
-          console.log(product);
         },
         error: error =>{
           console.log("Can find the product",error);
@@ -29,5 +28,31 @@ export class ProductDetailsComponent implements OnInit{
       );
     }
   }
+  addToCart(): void {
+    const id = this.product.id;
+    const quantity = 1;
+    let cartObj: { [id: number]: number } = {};
+    if (localStorage.getItem('cart')) {
+      cartObj = JSON.parse(localStorage.getItem('cart')!);
+    }
+    if (cartObj[id]) {
+      cartObj[id] += quantity;
+    } else {
+      cartObj[id] = quantity;
+    }
+    localStorage.setItem('cart', JSON.stringify(cartObj));
+  }
 
+  buyNow(): void {
+    const productId= this.product.id;
+    const quantity = 1;
+    const obj = {
+      id:productId,
+      quantity:quantity
+    }
+    let arr: any[] = [];
+    arr.push(obj);
+    localStorage.setItem('checkout',JSON.stringify(arr));
+  }
+  
 }
