@@ -29,11 +29,12 @@ export class ShoppingCartComponent {
             const quantity = cartObj[productId];
             product.quantity = quantity;
             this.products.push(product);
+            this.calculateTotalAmount();
           },
           error: error => {
             console.log(`Can't find the product with ID ${productId}`, error);
           }
-        });
+        }); 
       });
      }
   }

@@ -27,6 +27,11 @@ const routes: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'checkout',
+    component: CheckoutComponent,
+    canActivate: [authGuard]
+  },
+  {
     path: 'cart',
     component: ShoppingCartComponent,
     canActivate: [authGuard]
