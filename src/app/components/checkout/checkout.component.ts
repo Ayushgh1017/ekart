@@ -57,7 +57,7 @@ export class CheckoutComponent implements OnInit {
   makePayment(){
     this.checkout.calculateTotalAmount(this.products[0],this.delivery,this.tax);
     localStorage.removeItem('cart');
-    console.log("payment successfull");
+    
   }
   
 }
