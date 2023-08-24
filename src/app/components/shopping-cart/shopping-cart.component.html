@@ -32,7 +32,7 @@
           <p>Final Amount: {{ finalAmount }}</p>
         </div>
 
-        <button class="checkout-btn" routerLink="/checkout">Checkout</button>
+        <button class="checkout-btn" [routerLink]="['/checkout', finalAmount || 0]">Checkout</button>
       </div>
     </div>
   </div>

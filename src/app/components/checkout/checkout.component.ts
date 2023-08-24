@@ -5,6 +5,7 @@ import { IProduct } from 'src/app/models/IProduct';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CheckoutService } from 'src/app/services/checkout.service';
 
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -21,32 +22,12 @@ export class CheckoutComponent implements OnInit {
   tax:number = 2.5;
   finalAmount:number = 0;
 
-  constructor(private productService: ProductsService, private acRoute: ActivatedRoute, private fb: FormBuilder, private checkout:CheckoutService) {}
+  constructor( private fb: FormBuilder, private acRoute: ActivatedRoute) {}
 
   ngOnInit() {
-    const storedCart = localStorage.getItem('checkout');
-    
-    if (storedCart) {
-      const cartArray: { id: string, quantity: number }[] = JSON.parse(storedCart);
 
-      const productIds = cartArray.map(item => item.id);
+    this.finalAmount = parseFloat(this.acRoute.snapshot.paramMap.get('finalAmount'));
 
-      this.quantity = cartArray[0].quantity;
-      
-      productIds.forEach(productId => {
-        this.productService.getProductById(productId.toString()).subscribe({
-          next: product => {
-            this.products.push(product);
-          },
-          error: error => {
-            console.log(`Can't find the product with ID ${productId}`, error);
-          }
-        });
-      });
-    }
-    console.log("This is Product Array")
-    console.log(this.products);
-  
     this.shippingForm = this.fb.group({
     });
   
@@ -54,10 +35,5 @@ export class CheckoutComponent implements OnInit {
     });
   }
 
-  makePayment(){
-    this.checkout.calculateTotalAmount(this.products[0],this.delivery,this.tax);
-    localStorage.removeItem('cart');
-    
-  }
   
 }
