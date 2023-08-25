@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/models/IProduct'; 
 import { ProductsService } from 'src/app/services/products.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -9,11 +10,10 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
 })
-
 export class ProductDetailsComponent implements OnInit{
   product!: IProduct;
   id: string | null= null;
-  constructor(private productService:ProductsService, private acRoute:ActivatedRoute){}
+  constructor(private productService:ProductsService, private acRoute:ActivatedRoute, private snackBar: MatSnackBar){}
   ngOnInit(){
     this.acRoute.paramMap.subscribe(param=>{
       this.id = param.get('id');
@@ -43,6 +43,7 @@ export class ProductDetailsComponent implements OnInit{
       cartObj[id] = quantity;
     }
     localStorage.setItem('cart', JSON.stringify(cartObj));
+    this.snackBar.open('Added to Cart', 'OK', { duration: 2000 });
   }
 
   buyNow(): void {

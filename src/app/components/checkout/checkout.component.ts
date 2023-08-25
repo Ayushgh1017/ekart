@@ -40,19 +40,9 @@ export class CheckoutComponent implements OnInit {
     if (completed) {
       this.currentStep = 'payment';
     }
-    this.updatePaymentCompletion();
   }
 
-  onPaymentCompleted(completed: boolean) {
-    this.paymentCompleted = completed;
-    this.updatePaymentCompletion();
-  }
-
-  updatePaymentCompletion() {
-    if (this.shippingCompleted && this.paymentCompleted) {
-      this.currentStep = 'payment';
-    }
-  }
+  
 
   proceedToPayment() {
     console.log("Payment successfull");
@@ -67,13 +57,7 @@ export class CheckoutComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog closed with result:', result);
     });
+    localStorage.removeItem('cart');
   }
 
-  getShippingDetailsDisabled() {
-    return this.currentStep!== 'shipping';
-  }
-
-  getPaymentDetailsDisabled() {
-    return this.currentStep!== 'payment' ||!this.shippingCompleted;
-  }
 }
