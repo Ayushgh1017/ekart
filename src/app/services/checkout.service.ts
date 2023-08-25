@@ -10,11 +10,13 @@ export class CheckoutService {
 
   calculateTotalAmount(obj: IProduct, delivery: number, tax: number): number {
     let totalAmount = 0;
-
+  
     if (obj.quantity) {
       totalAmount = obj.price * obj.quantity;
     }
-
-    return totalAmount + delivery + (totalAmount * tax / 100);
+  
+    const finalAmount = totalAmount + delivery + (totalAmount * tax / 100);
+    return parseFloat(finalAmount.toFixed(2));
   }
+  
 }

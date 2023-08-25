@@ -1,4 +1,12 @@
-
+.navbar{
+  margin-bottom: 100px;
+  position: fixed;
+  top: 0;
+  z-index: 30;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  width: 100%;
+}
 
 a {
   text-decoration: none;
@@ -20,3 +28,4 @@ li{
 .logout{
   margin-left: 170%;
 }
+

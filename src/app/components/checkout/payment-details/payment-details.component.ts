@@ -9,14 +9,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class PaymentDetailsComponent implements OnInit {
   paymentForm!: FormGroup;
   @Output() paymentCompleted = new EventEmitter<boolean>();
-  constructor(private fb: FormBuilder) { }
+
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.paymentForm = this.fb.group({
-      cardNumber: ['', Validators.required],
-      expirationDate: ['', Validators.required],
-      cvv: ['', Validators.required],
-      paymentOption: ['credit', Validators.required] // Default to "credit"
+      cardNumber: ['', [Validators.required, Validators.minLength(16)]],
+      expirationDate: ['', [Validators.required]],
+      cvv: ['', [Validators.required, Validators.minLength(3)]],
+      paymentOption: ['credit', [Validators.required]]
     });
   }
 
@@ -26,5 +27,4 @@ export class PaymentDetailsComponent implements OnInit {
       this.paymentCompleted.emit(true);
     }
   }
-
 }

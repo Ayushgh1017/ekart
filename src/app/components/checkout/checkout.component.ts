@@ -39,9 +39,9 @@ export class CheckoutComponent implements OnInit {
     this.shippingCompleted = completed;
     if (completed) {
       this.currentStep = 'payment';
-    }
+      this.paymentCompleted = true;
   }
-
+}
   
 
   proceedToPayment() {

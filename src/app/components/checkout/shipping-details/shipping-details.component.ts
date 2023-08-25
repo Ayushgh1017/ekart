@@ -7,12 +7,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./shipping-details.component.css']
 })
 export class ShippingDetailsComponent implements OnInit {
-  isLinear = true; // Set isLinear to true
+  isLinear = true;
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder) { }
   @Output() shippingCompleted = new EventEmitter<boolean>();
+
+  constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -23,5 +24,8 @@ export class ShippingDetailsComponent implements OnInit {
     });
   }
 
-
+  checkShippingFormValidity() {
+    const isFormValid = this.firstFormGroup.valid && this.secondFormGroup.valid;
+    this.shippingCompleted.emit(isFormValid);
+  }
 }

@@ -1,39 +1,39 @@
-<h2>YOUR-CART</h2>
 <div class="container">
-  <div class="row1">
-    <div class="col-md-6">
-      <div *ngFor="let product of products" class="product-card">
-        <img [src]="product.image" [alt]="product.title">
+<h2 class="cart-title">Your Cart</h2>
+  <div class="cart-container">
+    <div class="product-list">
+      <div *ngIf="products.length === 0" class="empty-cart">
+        <mat-icon class="empty-cart-icon">shopping_cart</mat-icon>
+        <p class="empty-cart-message">Oops, your cart is empty.</p>
+      </div>
+      <div class="product-card" *ngFor="let product of products">
+        <img class="product-image" [src]="product.image" [alt]="product.title">
         <div class="product-info">
-          <h3>{{ product.title }}</h3>
-          <p>Price: {{ product.price }}</p>
-          <p>Quantity: {{ product.quantity }}</p>
-          <button (click)="addToCart(product)">+</button>
-          <button (click)="removeFromCart(product)">-</button>
-        </div>
-        <div class="product-details">
-          <p>{{ product.title }} * {{ product.quantity }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row2">
-    <div class="col-md-6">
-      <div class="amount-section">
-        <div class="total-amount">
-          <div class="product-details">
-            <h3>Product Details</h3>
-            <div *ngFor="let product of products" class="product-row">
-              <p>{{ product.title }} * {{ product.quantity }}</p>
-            </div>
+          <h3 class="product-title">{{ product.title }}</h3>
+          <p class="product-price">Price: ${{ product.price }}</p>
+          <div class="quantity-controls">
+            <button mat-icon-button (click)="removeFromCart(product)">
+              <mat-icon>remove</mat-icon>
+            </button>
+            <p class="product-quantity">Quantity: {{ product.quantity }}</p>
+            <button mat-icon-button (click)="addToCart(product)">
+              <mat-icon>add</mat-icon>
+            </button>
           </div>
-          <p>Delivery Charges: {{ delivery }}</p>
-          <p>Tax: {{ tax }}</p>
-          <p>Final Amount: {{ finalAmount }}</p>
         </div>
-
-        <button class="checkout-btn" [routerLink]="['/checkout', finalAmount || 0]">Checkout</button>
       </div>
     </div>
+    <div class="cart-summary">
+      <h3 class="summary-title">Cart Summary</h3>
+      <div class="summary-details">
+        <div *ngFor="let product of products" class="summary-item">
+          <p>{{ product.title }} x {{ product.quantity }}</p>
+        </div>
+        <p class="extra-charges">Delivery Charges: ${{ delivery }}</p>
+        <p class="extra-charges">Tax: ${{ tax }}</p>
+        <p class="final-amount">Final Amount: ${{ finalAmount }}</p>
+      </div>
+      <button mat-raised-button class="checkout-btn" [routerLink]="['/checkout', finalAmount || 0]">Checkout</button>
+    </div>
   </div>
-</div>
+  </div>

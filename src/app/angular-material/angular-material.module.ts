@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatStepperModule } from '@angular/material/stepper';
 import {MatRadioModule} from '@angular/material/radio';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -26,7 +26,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     MatStepperModule,
     MatRadioModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    
   ],
   exports: [
     MatInputModule,
@@ -39,7 +40,8 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     MatStepperModule,
     MatRadioModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    
   ]
 })
 export class AngularMaterialModule {}

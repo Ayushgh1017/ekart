@@ -1,5 +1,5 @@
 <div class="container">
-<form (ngSubmit)="submitForm()" [formGroup]="form" autocomplete="off">
+<form (ngSubmit)="submitForm()" [formGroup]="form" autocomplete="off" id="loginform">
   <div style="display: flex; justify-content: center">
     <mat-card class="form-container">
       <mat-card-title>Ekart Login Page</mat-card-title>
@@ -7,7 +7,7 @@
       <!-- Username -->
       <div>
         <mat-form-field>
-          <mat-label>Username</mat-label>
+          <mat-label class="label">Username</mat-label>
           <input
             matInput
             placeholder="Ex. profanis"
@@ -32,7 +32,7 @@
       <!-- /Password -->
 
       <div>
-        <button type="submit" mat-raised-button color="primary">Login</button>
+        <button id="login" type="submit" mat-raised-button color="primary">Login</button>
       </div>
     </mat-card>
   </div>

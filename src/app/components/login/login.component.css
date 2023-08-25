@@ -1,37 +1,70 @@
-.container{
-    background-color: white
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('../../../assets/background.jpg'); /* Replace with your background image */
+  background-size: cover;
+  backdrop-filter: blur(10px);
 }
+
 .form-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #8f5fe2;;
-    color: white;
-  }
+  width: 350px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+mat-card-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-label {
+  font-size: 1rem;
+  color: white;
+}
+
+mat-form-field > div {
+  display: flex;
+  align-items: center;
+}
+
+mat-icon.mat-form-field-prefix {
   
-  mat-card {
-    width: 400px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #ffffff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .heading{
-    margin-bottom: 15px;
-    color: white;
-    font-size: 30px;
-  }
-  
-  mat-form-field {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  
-  button {
-    width: 100%;
-    background-color: white;
-  }
-  
+  font-size: 1.2rem;
+}
+
+mat-input-element {
+  padding-left: 10px;
+  color: white;
+}
+
+button[type="submit"] {
+  width: 100%;
+}
+
+button[type="submit"].mat-primary {
+  background-color: #1976d2;
+  color: white;
+}
+
+button[type="submit"].mat-primary:hover {
+  background-color: #1565c0;
+}
+
+.transparent-input {
+  background-color: white;
+  color: black;
+}
+
+.label{
+  color:black
+}
