@@ -20,7 +20,10 @@ export class ShoppingCartComponent {
 
 
   ngOnInit(){
-     const cartObj = this.cartService.getCartObject();
+    this.getProducts();
+  }
+  getProducts(){
+    const cartObj = this.cartService.getCartObject();
      if (cartObj){
       const productIds = Object.keys(cartObj);
       productIds.forEach(productId => {

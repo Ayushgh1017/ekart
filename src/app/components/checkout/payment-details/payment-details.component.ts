@@ -7,21 +7,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./payment-details.component.css']
 })
 export class PaymentDetailsComponent implements OnInit {
-  paymentForm: FormGroup;
+  paymentForm!: FormGroup;
   @Output() paymentCompleted = new EventEmitter<boolean>();
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder) { }
+
+  ngOnInit(): void {
     this.paymentForm = this.fb.group({
       cardNumber: ['', Validators.required],
       expirationDate: ['', Validators.required],
-      cvv: ['', Validators.required]
+      cvv: ['', Validators.required],
+      paymentOption: ['credit', Validators.required] // Default to "credit"
     });
   }
 
-  ngOnInit() {
+  onSubmitPayment(): void {
+    if (this.paymentForm.valid) {
+      console.log('Payment form submitted:', this.paymentForm.value);
+      this.paymentCompleted.emit(true);
+    }
   }
-
-onSubmitPayment() {
-  this.paymentCompleted.emit(true);
-}
 
 }

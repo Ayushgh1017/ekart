@@ -9,8 +9,8 @@
       <app-payment-details (paymentCompleted)="onPaymentCompleted($event)"></app-payment-details>
     </div>
     <div class="col-md-4">
-      <h2>Product Information</h2>
-      <app-order-summary [products]="products" [finalAmount]="finalAmount"></app-order-summary>
+      <h2>Order Summary </h2>
+      <app-order-summary [finalAmount]="finalAmount"></app-order-summary>
     </div>
   </div>
   <div class="row">

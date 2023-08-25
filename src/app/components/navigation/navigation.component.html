@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="navbar" color="primary">
   <div>
     <button mat-icon-button>
       <mat-icon class="mat-18">menu</mat-icon>
@@ -9,7 +9,7 @@
     <ul class="nav-items">
       <li><a routerLink="/">Dashboard</a></li>
       <li><a routerLink="/products">Products</a></li>
-      <li><a routerLink="/cart">Cart</a></li>
+      <li class="cart"><a routerLink="/cart">Cart</a></li>
       <li class="logout"><button mat-button (click)="logout()">Logout</button></li>
     </ul>
   </div>

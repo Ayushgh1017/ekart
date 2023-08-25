@@ -1,7 +1,16 @@
 <div *ngFor="let product of products" class="order-summary-item">
+  <div class="item-image">
+    <img [src]="product.image" alt="{{ product.title }}">
+  </div>
+  <div class="item-details">
     <h3>{{ product.title }}</h3>
+    <p>Quantity: {{ product.quantity }}</p>
   </div>
-  <div>
-    <p>Total Price: {{totalPrice}}</p>
+</div>
+
+<div class="order-summary">
+  <div class="total-price">
+    <h2>Total Price:</h2>
+    <p>Net Payable Amount: ${{ totalPrice }}</p>
   </div>
-  
+</div>

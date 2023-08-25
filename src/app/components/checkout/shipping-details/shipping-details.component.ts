@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,25 +6,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './shipping-details.component.html',
   styleUrls: ['./shipping-details.component.css']
 })
-export class ShippingDetailsComponent {
-  shippingForm: FormGroup;
+export class ShippingDetailsComponent implements OnInit {
+  isLinear = true; // Set isLinear to true
+  firstFormGroup!: FormGroup;
+  secondFormGroup!: FormGroup;
+
+  constructor(private _formBuilder: FormBuilder) { }
   @Output() shippingCompleted = new EventEmitter<boolean>();
-  constructor(private fb: FormBuilder) {
-    this.shippingForm = this.fb.group({
-      name: ['', Validators.required],
-      address: ['', Validators.required],
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      zip: ['', Validators.required]
+
+  ngOnInit() {
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
     });
   }
 
-  ngOnInit() {
-  }
-
-
-onSubmitShipping() {
-  this.shippingCompleted.emit(true);
-}
 
 }

@@ -1,14 +1,36 @@
 <form [formGroup]="paymentForm" (ngSubmit)="onSubmitPayment()">
-    <mat-form-field>
+  
+  <mat-radio-group formControlName="paymentOption">
+    <mat-radio-button value="credit">Credit</mat-radio-button>
+    <mat-radio-button value="debit">Debit</mat-radio-button>
+    <mat-radio-button value="upi">UPI</mat-radio-button>
+  </mat-radio-group>
+  
+  <!-- Render fields conditionally based on the selected payment option -->
+  <div *ngIf="paymentForm.get('paymentOption')?.value === 'credit' || paymentForm.get('paymentOption')?.value === 'debit'">
+    <mat-form-field [ngClass]="{'invalid-field': paymentForm.get('cardNumber')?.invalid && paymentForm.get('cardNumber')?.touched}">
       <input matInput id="card-number" formControlName="cardNumber" required>
       <mat-label>Card Number</mat-label>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field [ngClass]="{'invalid-field': paymentForm.get('expirationDate')?.invalid && paymentForm.get('expirationDate')?.touched}">
       <input matInput id="expiration-date" formControlName="expirationDate" required>
       <mat-label>Expiration Date</mat-label>
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field [ngClass]="{'invalid-field': paymentForm.get('cvv')?.invalid && paymentForm.get('cvv')?.touched}">
       <input matInput id="cvv" formControlName="cvv" required>
       <mat-label>CVV</mat-label>
     </mat-form-field>
-  </form>
+  </div>
+  <div *ngIf="paymentForm.get('paymentOption')?.value === 'upi'">
+    <mat-form-field [ngClass]="{'invalid-field': paymentForm.get('upiId')?.invalid && paymentForm.get('upiId')?.touched}">
+      <input matInput id="upi-id" formControlName="upiId" required>
+      <mat-label>UPI ID</mat-label>
+    </mat-form-field>
+  </div>
+</form>
+
+<style>
+  .invalid-field .mat-input-element {
+    border-color: red;
+  }
+</style>

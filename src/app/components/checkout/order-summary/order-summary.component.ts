@@ -9,17 +9,32 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./order-summary.component.css']
 })
 export class OrderSummaryComponent {
-  @Input() products!: IProduct[];
+  product!: IProduct;
+  products: IProduct[] = [];
   @Input() finalAmount!: number;
 
   totalPrice: number = 0;
 
-  constructor(private productService: ProductsService, private cartService: CartService) { }
+  constructor(private cartService: CartService, private productService: ProductsService) { }
 
   ngOnInit() {
-
-
     this.totalPrice = this.finalAmount;
-    console.log("total price" , this.totalPrice);
+    this.getDetails();
+  }
+
+  getDetails(){
+    const cartObj = this.cartService.getCartObject();
+    if (cartObj){
+      const productIds = Object.keys(cartObj);
+      productIds.forEach(productId => {
+        this.productService.getProductById(productId).subscribe({
+          next: (product: IProduct) => {
+            const quantity = cartObj[productId];
+            product.quantity = quantity;
+            this.products.push(product);
+          },
+        }); 
+      });
+    }
   }
 }

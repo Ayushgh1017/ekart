@@ -9,6 +9,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatStepperModule } from '@angular/material/stepper';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatIconModule,
     MatMenuModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatStepperModule,
+    MatRadioModule
   ],
   exports: [
     MatInputModule,
@@ -33,6 +37,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatIconModule,
     MatMenuModule,
     MatTableModule,
+    MatStepperModule,
+    MatRadioModule
   ],
 })
 export class AngularMaterialModule {}
