@@ -13,13 +13,11 @@ const routes: Routes = [
   },
   {
     path: 'products',
-    component: ProductsComponent,
-    canActivate: [authGuard]
+    component: ProductsComponent
   },
   {
     path: 'product/:id',
     component: ProductDetailsComponent,
-    canActivate: [authGuard]
   },
   {
     path: 'product/:id/checkout',

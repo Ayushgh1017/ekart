@@ -15,6 +15,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ShippingDetailsComponent } from './components/checkout/shipping-details/shipping-details.component';
 import { PaymentDetailsComponent } from './components/checkout/payment-details/payment-details.component';
 import { OrderSummaryComponent } from './components/checkout/order-summary/order-summary.component';
+import { MatDialogComponent } from './components/mat-dialog/mat-dialog.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { OrderSummaryComponent } from './components/checkout/order-summary/order
     ShippingDetailsComponent,
     PaymentDetailsComponent,
     OrderSummaryComponent,
+    MatDialogComponent,
   ],
   imports: [
     BrowserModule,

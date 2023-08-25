@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PaymentDetailsComponent implements OnInit {
   paymentForm: FormGroup;
-
+  @Output() paymentCompleted = new EventEmitter<boolean>();
   constructor(private fb: FormBuilder) {
     this.paymentForm = this.fb.group({
       cardNumber: ['', Validators.required],
@@ -20,8 +20,8 @@ export class PaymentDetailsComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmitPayment() {
-    // Handle form submission
-    console.log(this.paymentForm.value);
-  }
+onSubmitPayment() {
+  this.paymentCompleted.emit(true);
+}
+
 }
