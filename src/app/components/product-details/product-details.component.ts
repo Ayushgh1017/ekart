@@ -3,11 +3,13 @@ import { IProduct } from 'src/app/models/IProduct';
 import { ProductsService } from 'src/app/services/products.service';
 import { ActivatedRoute } from '@angular/router';
 
+
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
 })
+
 export class ProductDetailsComponent implements OnInit{
   product!: IProduct;
   id: string | null= null;
