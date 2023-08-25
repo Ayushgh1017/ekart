@@ -1,34 +1,32 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
+import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private apiUrl = 'https://fakestoreapi.com/auth/login';
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this._isLoggedIn$.asObservable();
-  key:string='';
-  constructor(private apiService: ApiService) {
+  key: string = '';
+
+  constructor(private http: HttpClient) {
     this._isLoggedIn$.next(this.isAuthenticated());
   }
 
- 
-
   private isAuthenticated(): boolean {
     const username = localStorage.getItem('loggedInUser');
-    return!!username && localStorage.getItem(username)!== null;
+    return !!username && localStorage.getItem(username) !== null;
   }
 
   login(username: string, password: string): Observable<boolean> {
-    return this.apiService.login(username, password).pipe(
+    return this.http.post<any>(this.apiUrl, { username, password }).pipe(
       map(response => {
-        if (response) {
+        if (response.token) {
           localStorage.setItem('loggedInUser', username);
-          const token = response;
-          localStorage.setItem('auth', token);
+          localStorage.setItem(username, response.token);
           this._isLoggedIn$.next(true);
           return true;
         } else {
@@ -39,15 +37,16 @@ export class AuthService {
   }
 
   logout(): void {
-    localStorage.removeItem('loggedInUser');
+    const loggedInUser = localStorage.getItem('loggedInUser');
+    if (loggedInUser) {
+      localStorage.removeItem(loggedInUser);
+    }
     localStorage.removeItem('auth');
-    
     this._isLoggedIn$.next(false);
   }
 
-
   getToken(): string {
     const username = localStorage.getItem('loggedInUser');
-    return username? localStorage.getItem(username) || '' : '';
+    return username ? localStorage.getItem(username) || '' : '';
   }
 }

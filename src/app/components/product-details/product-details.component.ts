@@ -13,8 +13,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ProductDetailsComponent implements OnInit{
   product!: IProduct;
   id: string | null= null;
+
+
   constructor(private productService:ProductsService, private acRoute:ActivatedRoute, private snackBar: MatSnackBar){}
+
   ngOnInit(){
+    this.getIdFromRoute()
+  }
+
+  getIdFromRoute(){
     this.acRoute.paramMap.subscribe(param=>{
       this.id = param.get('id');
     })
