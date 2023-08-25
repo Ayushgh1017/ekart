@@ -1,0 +1,22 @@
+<form [formGroup]="shippingForm" (ngSubmit)="onSubmitShipping()">
+    <mat-form-field>
+      <input matInput id="name" formControlName="name" required>
+      <mat-label>Name</mat-label>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput id="address" formControlName="address" required>
+      <mat-label>Address</mat-label>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput id="city" formControlName="city" required>
+      <mat-label>City</mat-label>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput id="state" formControlName="state" required>
+      <mat-label>State</mat-label>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput id="zip" formControlName="zip" required>
+      <mat-label>Zip</mat-label>
+    </mat-form-field>
+  </form>
