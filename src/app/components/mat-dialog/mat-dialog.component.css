@@ -4,16 +4,15 @@
     margin-bottom: 10px;
   }
   
-  .tick-icon {
+  
+  .mat-icon {
+    font-size: 3rem; 
+    color: green;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 15px;
-  }
-  
-  .tick-icon mat-icon {
-    font-size: 3rem; 
-    color: green; 
+    margin-left: 50%;
   }
   
   mat-dialog-content {

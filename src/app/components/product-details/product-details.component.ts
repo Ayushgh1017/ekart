@@ -31,7 +31,7 @@ export class ProductDetailsComponent implements OnInit{
           this.product = product;
         },
         error: error =>{
-          console.log("Can find the product",error);
+          
         }
       }
       );

@@ -16,6 +16,15 @@ export class CartService {
     }
     return null;
   }
+
+  getBuyNowArray(): {id:number,quantity:number}[]{
+    const buyNowArrayString = localStorage.getItem('checkout');
+    if (buyNowArrayString) {
+      return JSON.parse(buyNowArrayString);
+    }
+    return [];
+  }
+
   addToCart(product: IProduct):number{
     const cart = this.getCartObject();
     const productId = product.id;

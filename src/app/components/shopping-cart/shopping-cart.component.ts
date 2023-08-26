@@ -35,7 +35,7 @@ export class ShoppingCartComponent {
             this.calculateTotalAmount();
           },
           error: error => {
-            console.log(`Can't find the product with ID ${productId}`, error);
+            
           }
         }); 
       });
@@ -58,16 +58,15 @@ export class ShoppingCartComponent {
   }
 
   calculateTotalAmount() {
-    console.log("Calculating total amount...");
     let amount = 0;
     this.products.forEach((product) => {
-      console.log(product.quantity);
+      
       if (product.quantity) {
-        console.log("Inner",product.quantity);
+        
         amount += this.checkoutService.calculateTotalAmount(product, this.delivery, this.tax);
       }
     });
-    console.log("Calculated amount:", amount);
+    
     this.finalAmount = amount;
   }
   

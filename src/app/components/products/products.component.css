@@ -38,8 +38,7 @@
     padding: 10px;
   }
   
-  .mat-card-title,
-  .mat-card-subtitle {
+  .title {
     margin-bottom: 5px;
   }
   
@@ -47,7 +46,7 @@
     flex-grow: 1;
   }
   
-  .mat-card-actions {
+  .actions {
     display: flex;
     justify-content: center;
     align-items: flex-end;

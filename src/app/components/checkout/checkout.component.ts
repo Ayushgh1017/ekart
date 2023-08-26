@@ -48,7 +48,7 @@ export class CheckoutComponent{
       });
   
       dialogRef.afterClosed().subscribe(result => {
-        console.log('Dialog closed with result:', result);
+        
       });
   
       localStorage.removeItem('cart');
