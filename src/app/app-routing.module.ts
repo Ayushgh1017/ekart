@@ -22,11 +22,13 @@ const routes: Routes = [
   {
     path: 'product/:id/checkout',
     component: CheckoutComponent,
+    data : { action: 'buy' },
     canActivate: [authGuard]
   },
   {
     path: 'checkout/:finalAmount',
     component: CheckoutComponent,
+    data : { action: 'cart' },
     canActivate: [authGuard]
   },
   {

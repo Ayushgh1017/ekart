@@ -24,6 +24,11 @@ export class ShippingDetailsComponent implements OnInit {
     });
   }
 
+  ngOnChanges(){
+    this.checkShippingFormValidity();
+
+  }
+
   checkShippingFormValidity() {
     const isFormValid = this.firstFormGroup.valid && this.secondFormGroup.valid;
     this.shippingCompleted.emit(isFormValid);

@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <div class="checkout-section" [ngClass]="{'disabled-section': currentStep !== 'shipping'}">
+      <div class="checkout-section">
         <h2>Shipping Details</h2>
-        <app-shipping-details></app-shipping-details>
+        <app-shipping-details (shippingCompleted)="onShippingCompleted($event)"></app-shipping-details>
       </div>
-      <div class="checkout-section" [ngClass]="{'disabled-section': currentStep !== 'payment' || !shippingCompleted}">
+      <div class="checkout-section">
         <h2>Payment Details</h2>
         <app-payment-details></app-payment-details>
       </div>
@@ -19,7 +19,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <button mat-raised-button color="primary" (click)="proceedToPayment()" [ngClass]="{'disabled': !shippingCompleted || !paymentCompleted}">Proceed to Payment</button>
+      <button mat-raised-button color="primary" (click)="proceedToPayment()">Proceed to Payment</button>
     </div>
   </div>
 </div>

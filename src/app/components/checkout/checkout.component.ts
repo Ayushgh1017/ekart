@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IProduct } from 'src/app/models/IProduct';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogComponent } from '../mat-dialog/mat-dialog.component';
 @Component({
@@ -9,17 +8,9 @@ import { MatDialogComponent } from '../mat-dialog/mat-dialog.component';
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css']
 })
-export class CheckoutComponent implements OnInit {
-  product!: IProduct;
-  products: IProduct[] = [];
-  id: string | null = null;
-  shippingForm!: FormGroup;
-  paymentForm!: FormGroup;
-  quantity!: number;
-  delivery:number = 3;
-  tax:number = 2.5;
-  finalAmount:number = 0;
+export class CheckoutComponent{
 
+  finalAmount:number = 0;
   currentStep: 'shipping' | 'payment' = 'shipping';
   shippingCompleted = false;
   paymentCompleted = false;
@@ -32,32 +23,36 @@ export class CheckoutComponent implements OnInit {
       let amount= param.get('finalAmount');
       this.finalAmount = parseFloat(amount!);
     })
-    console.log(this.finalAmount);;
   }
 
   onShippingCompleted(completed: boolean) {
-    this.shippingCompleted = completed;
+    this.shippingCompleted = true;
     if (completed) {
       this.currentStep = 'payment';
-      this.paymentCompleted = true;
+    }
+    this.onPaymentCompleted();
   }
-}
   
-
+  onPaymentCompleted() {
+    this.paymentCompleted = false;
+  }
+  
   proceedToPayment() {
-    console.log("Payment successfull");
-    const dialogRef = this.dialog.open(MatDialogComponent, {
-      width: '600px',
-      height: '400px',
-      data: {
-        paymentAmount: this.finalAmount,
-      }
-    });
+   
+      const dialogRef = this.dialog.open(MatDialogComponent, {
+        width: '600px',
+        height: '400px',
+        data: {
+          paymentAmount: this.finalAmount,
+        }
+      });
   
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialog closed with result:', result);
-    });
-    localStorage.removeItem('cart');
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('Dialog closed with result:', result);
+      });
+  
+      localStorage.removeItem('cart');
   }
+  
 
 }

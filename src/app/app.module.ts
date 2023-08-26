@@ -16,6 +16,8 @@ import { ShippingDetailsComponent } from './components/checkout/shipping-details
 import { PaymentDetailsComponent } from './components/checkout/payment-details/payment-details.component';
 import { OrderSummaryComponent } from './components/checkout/order-summary/order-summary.component';
 import { MatDialogComponent } from './components/mat-dialog/mat-dialog.component';
+import { AuthModuleModule } from './auth-module/auth-module.module';
+import { CartModuleModule } from './cart-module/cart-module.module';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { MatDialogComponent } from './components/mat-dialog/mat-dialog.component
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    AuthModuleModule,
+    CartModuleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

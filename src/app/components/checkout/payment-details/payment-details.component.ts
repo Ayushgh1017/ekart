@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './payment-details.component.html',
   styleUrls: ['./payment-details.component.css']
 })
-export class PaymentDetailsComponent implements OnInit {
+export class PaymentDetailsComponent{
   paymentForm!: FormGroup;
   @Output() paymentCompleted = new EventEmitter<boolean>();
 
@@ -21,9 +21,12 @@ export class PaymentDetailsComponent implements OnInit {
     });
   }
 
+  ngOnChanges(){
+    this.onSubmitPayment();
+  }
+
   onSubmitPayment(): void {
     if (this.paymentForm.valid) {
-      console.log('Payment form submitted:', this.paymentForm.value);
       this.paymentCompleted.emit(true);
     }
   }

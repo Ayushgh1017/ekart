@@ -34,9 +34,14 @@
 }
 
 .disabled-section {
-  opacity: 0.5;
-  pointer-events: none;
+  opacity: 0.5; 
 }
+
+
+.checkout-section {
+  opacity: 1;
+}
+
 
 .col-md-12 button {
   padding: 10px 20px;
