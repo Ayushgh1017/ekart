@@ -1,16 +1,16 @@
 <mat-toolbar class="navbar" color="primary">
-  <div>
-    <button mat-icon-button>
-      <mat-icon class="mat-18">menu</mat-icon>
-    </button>
+  <div class="nav-items">
+    <ul>
+      <li><a routerLink="/" routerLinkActive="active">Dashboard</a></li>
+      <li><a routerLink="/products" routerLinkActive="active">Products</a></li>
+    </ul>
   </div>
-  <div>Ekart</div>
-  <div>
-    <ul class="nav-items">
-      <li><a routerLink="/">Dashboard</a></li>
-      <li><a routerLink="/products">Products</a></li>
-      <li class="cart"><a routerLink="/cart">Cart</a></li>
-      <li class="logout"><button mat-button (click)="logout()">Logout</button></li>
+  <div class="logo">Ekart</div>
+  <div class="nav-items">
+    <ul class="right-items">
+      <li>{{userName}}</li>
+      <li class="cart"><a routerLink="/cart" routerLinkActive="active">Cart</a></li>
+      <li class="logout" (click)="logout()">Logout</li>
     </ul>
   </div>
 </mat-toolbar>

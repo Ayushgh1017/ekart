@@ -1,0 +1,23 @@
+.dialog-title {
+    color: #333; 
+    font-size: 1.5rem; 
+    margin-bottom: 10px;
+  }
+  
+  .tick-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .tick-icon mat-icon {
+    font-size: 3rem; 
+    color: green; 
+  }
+  
+  mat-dialog-content {
+    color: #555; 
+    font-size: 1rem; 
+  }
+  

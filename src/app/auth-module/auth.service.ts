@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +11,6 @@ export class AuthService {
   private apiUrl = 'https://fakestoreapi.com/auth/login';
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this._isLoggedIn$.asObservable();
-  key: string = '';
 
   constructor(private http: HttpClient) {
     this._isLoggedIn$.next(this.isAuthenticated());
@@ -45,8 +45,12 @@ export class AuthService {
     this._isLoggedIn$.next(false);
   }
 
-  getToken(): string {
-    const username = localStorage.getItem('loggedInUser');
-    return username ? localStorage.getItem(username) || '' : '';
+  getUsername():string{
+    let name =  localStorage.getItem('loggedInUser');
+    if(name){
+      return name;
+    }
+    return '';
   }
+
 }

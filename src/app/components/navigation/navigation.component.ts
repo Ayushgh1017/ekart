@@ -7,9 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./navigation.component.css'],
 })
 export class NavigationComponent implements OnInit {
+
+  userName:string = '@';
   constructor(private authService:AuthService, private router:Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.userName = this.authService.getUsername();
+  }
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);
