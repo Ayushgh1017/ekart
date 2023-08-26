@@ -60,7 +60,7 @@ export class ProductDetailsComponent implements OnInit{
       id:productId,
       quantity:quantity
     }
-    let arr: any[] = [];
+    let arr: {id:number,quantity:number}[] = [];
     arr.push(obj);
     localStorage.setItem('checkout',JSON.stringify(arr));
   }

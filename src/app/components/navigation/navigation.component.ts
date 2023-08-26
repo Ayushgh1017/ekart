@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
 
-  userName:string = '@';
+  userName:string = '';
   constructor(private authService:AuthService, private router:Router) {}
 
   ngOnInit() {

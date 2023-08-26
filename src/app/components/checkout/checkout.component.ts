@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -40,7 +40,6 @@ export class CheckoutComponent{
   
   proceedToPayment() {
     if (this.shippingCompleted && this.paymentCompleted) {
-      // Proceed to payment
       const dialogRef = this.dialog.open(MatDialogComponent, {
         width: '600px',
         height: '400px',
