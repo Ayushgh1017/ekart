@@ -7,7 +7,7 @@
       </div>
       <div class="checkout-section">
         <h2>Payment Details</h2>
-        <app-payment-details></app-payment-details>
+        <app-payment-details (paymentCompleted)="onPaymentCompleted($event)"></app-payment-details>
       </div>
     </div>
     <div class="col-md-4">
@@ -19,7 +19,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <button mat-raised-button color="primary" (click)="proceedToPayment()">Proceed to Payment</button>
+      <button mat-raised-button color="primary" [disabled]="!isFormValid" (click)="proceedToPayment()">Proceed to Payment</button>
     </div>
   </div>
 </div>

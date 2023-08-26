@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit, OnChanges, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './shipping-details.component.html',
   styleUrls: ['./shipping-details.component.css']
 })
-export class ShippingDetailsComponent implements OnInit {
+export class ShippingDetailsComponent implements OnInit, OnChanges {
   isLinear = true;
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
@@ -25,8 +25,9 @@ export class ShippingDetailsComponent implements OnInit {
   }
 
   ngOnChanges(){
-    this.checkShippingFormValidity();
-
+    if (this.firstFormGroup.valid && this.secondFormGroup.valid) {
+      this.shippingCompleted.emit(true);
+    }
   }
 
   checkShippingFormValidity() {

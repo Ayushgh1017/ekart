@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogComponent } from '../mat-dialog/mat-dialog.component';
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -14,7 +15,7 @@ export class CheckoutComponent{
   currentStep: 'shipping' | 'payment' = 'shipping';
   shippingCompleted = false;
   paymentCompleted = false;
-
+  isFormValid = false;
   constructor( private fb: FormBuilder, private acRoute: ActivatedRoute,public dialog: MatDialog) {}
 
   ngOnInit() {
@@ -25,20 +26,21 @@ export class CheckoutComponent{
     })
   }
 
-  onShippingCompleted(completed: boolean) {
-    this.shippingCompleted = true;
-    if (completed) {
-      this.currentStep = 'payment';
-    }
-    this.onPaymentCompleted();
+  onShippingCompleted(isShippingValid: boolean) {
+    this.shippingCompleted = isShippingValid;
+    this.isFormValid = isShippingValid;
   }
   
-  onPaymentCompleted() {
-    this.paymentCompleted = false;
+  onPaymentCompleted(isPaymentValid: boolean) {
+    this.paymentCompleted = isPaymentValid;
+    this.isFormValid = isPaymentValid;
   }
+
+  
   
   proceedToPayment() {
-   
+    if (this.shippingCompleted && this.paymentCompleted) {
+      // Proceed to payment
       const dialogRef = this.dialog.open(MatDialogComponent, {
         width: '600px',
         height: '400px',
@@ -52,6 +54,7 @@ export class CheckoutComponent{
       });
   
       localStorage.removeItem('cart');
+    }
   }
   
 
