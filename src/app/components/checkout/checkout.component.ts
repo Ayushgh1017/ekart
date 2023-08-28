@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogComponent } from '../mat-dialog/mat-dialog.component';
 
@@ -37,7 +37,6 @@ export class CheckoutComponent{
 
   }
 
-  
   
   proceedToPayment() {
     if (this.shippingCompleted && this.paymentCompleted) {

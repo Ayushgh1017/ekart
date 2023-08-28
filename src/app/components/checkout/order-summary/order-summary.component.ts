@@ -4,6 +4,7 @@ import { ProductsService } from 'src/app/services/products.service';
 import { CartService } from 'src/app/cart-module/cart.service';
 import { ActivatedRoute } from '@angular/router';
 import { CheckoutService } from 'src/app/cart-module/checkout.service';
+import { Observable, map, of } from 'rxjs';
 
 @Component({
   selector: 'app-order-summary',
@@ -22,27 +23,31 @@ export class OrderSummaryComponent {
   ngOnInit() {
     const action = this.route.snapshot.data['action'];
     if (action === 'buy') {
-      this.getSingleDetails();
-      this.totalPrice = this.products[0].price;
+      this.getSingleDetails().subscribe(products => {
+        this.products = products;
+        this.totalPrice = this.products[0].price;
+      });
+      
     } else if (action === 'cart') {
       this.getDetails();
       this.totalPrice = this.finalAmount;
     }
   }
 
-  getSingleDetails(){
+  getSingleDetails(): Observable<IProduct[]> {
     const cartObj = this.cartService.getBuyNowArray();
-    if(cartObj){
+    if (cartObj) {
       const productId = cartObj[0].id;
       const quantity = cartObj[0].quantity;
 
-      this.productService.getProductById(productId.toString()).subscribe({
-        next: (product:IProduct) =>{
+      return this.productService.getProductById(productId.toString()).pipe(
+        map((product: IProduct) => {
           product.quantity = quantity;
-          this.products.push(product);
-        }
-      })
+          return [product];
+        })
+      );
     }
+    return of([]);
   }
 
   getDetails(){
