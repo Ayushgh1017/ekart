@@ -31,5 +31,8 @@ export class PaymentDetailsComponent implements OnInit, OnChanges {
     if (this.paymentForm.valid) {
       this.paymentCompleted.emit(true);
     }
+    else {
+      console.log('Form is invalid or has not been touched');
+    }
   }
 }

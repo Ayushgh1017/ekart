@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './shipping-details.component.html',
   styleUrls: ['./shipping-details.component.css']
 })
-export class ShippingDetailsComponent implements OnInit, OnChanges {
+export class ShippingDetailsComponent implements OnInit {
   isLinear = true;
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
@@ -24,14 +24,13 @@ export class ShippingDetailsComponent implements OnInit, OnChanges {
     });
   }
 
-  ngOnChanges(){
-    if (this.firstFormGroup.valid && this.secondFormGroup.valid) {
+
+  submitAddress(){
+    if(this.firstFormGroup.valid && this.secondFormGroup.valid){
       this.shippingCompleted.emit(true);
     }
-  }
-
-  checkShippingFormValidity() {
-    const isFormValid = this.firstFormGroup.valid && this.secondFormGroup.valid;
-    this.shippingCompleted.emit(isFormValid);
+    else{
+      console.log("Form is invalid or has nit been touched");
+    }
   }
 }

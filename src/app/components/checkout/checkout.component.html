@@ -19,7 +19,7 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <button mat-raised-button color="primary" [disabled]="!isFormValid" (click)="proceedToPayment()">Proceed to Payment</button>
+      <button mat-raised-button color="primary" [disabled]="!shippingCompleted || false" (click)="proceedToPayment()">Proceed to Payment</button>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogComponent } from '../mat-dialog/mat-dialog.component';
 
@@ -14,8 +14,9 @@ export class CheckoutComponent{
   finalAmount:number = 0;
   currentStep: 'shipping' | 'payment' = 'shipping';
   shippingCompleted = false;
-  paymentCompleted = false;
-  isFormValid = false;
+  paymentCompleted = true;
+  checkoutForm! : FormGroup;
+
   constructor( private fb: FormBuilder, private acRoute: ActivatedRoute,public dialog: MatDialog) {}
 
   ngOnInit() {
@@ -24,22 +25,26 @@ export class CheckoutComponent{
       let amount= param.get('finalAmount');
       this.finalAmount = parseFloat(amount!);
     })
+    this.checkoutForm = new FormGroup({
+      
+    })
   }
 
   onShippingCompleted(isShippingValid: boolean) {
     this.shippingCompleted = isShippingValid;
-    this.isFormValid = isShippingValid;
+    console.log(this.shippingCompleted);
   }
   
   onPaymentCompleted(isPaymentValid: boolean) {
     this.paymentCompleted = isPaymentValid;
-    this.isFormValid = isPaymentValid;
+
   }
 
   
   
   proceedToPayment() {
     if (this.shippingCompleted && this.paymentCompleted) {
+      
       const dialogRef = this.dialog.open(MatDialogComponent, {
         width: '600px',
         height: '400px',
