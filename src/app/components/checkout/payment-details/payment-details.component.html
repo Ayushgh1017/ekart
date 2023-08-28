@@ -1,4 +1,4 @@
-<form [formGroup]="paymentForm" (ngSubmit)="onSubmitPayment()">
+<form [formGroup]="paymentForm">
   
   <mat-radio-group formControlName="paymentOption">
     <mat-radio-button value="credit">Credit</mat-radio-button>
@@ -27,6 +27,7 @@
       <mat-label>UPI ID</mat-label>
     </mat-form-field>
   </div>
+  <button mat-button (click)="onSubmitPayment()">Save</button>
 </form>
 
 <style>
