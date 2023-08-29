@@ -21,7 +21,7 @@ export class AuthService {
   }
 
   private isAuthenticated(): boolean {
-    const username = localStorage.getItem('loggedInUser');
+    const username = this.getfromStorage('loggedInUser');
     return !!username && localStorage.getItem(username) !== null;
   }
 
@@ -49,18 +49,25 @@ export class AuthService {
     }
   }
 
+  getfromStorage(input:string){
+    return localStorage.getItem(input)
+  }
+
+  removeFromStorage(input:string){
+    return localStorage.removeItem(input);
+  }
   
   logout(): void {
-    const loggedInUser = localStorage.getItem('loggedInUser');
+    const loggedInUser = this.getfromStorage('loggedInUser');
     if (loggedInUser) {
-      localStorage.removeItem('loggedInUser');
+      this.removeFromStorage('loggedInUser')
     }
-    localStorage.removeItem('authToken');
+    this.removeFromStorage('authToken');
     this._isLoggedIn$.next(false);
   }
 
   getUsername(): Observable<string> {
-    const loggedInUser = localStorage.getItem('loggedInUser');
+    const loggedInUser = this.getfromStorage('loggedInUser');
     return of(loggedInUser || '');
   }
 
