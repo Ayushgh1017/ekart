@@ -13,6 +13,7 @@ export class AuthService {
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this._isLoggedIn$.asObservable();
 
+
   constructor(private http: HttpClient) {
     this._isLoggedIn$.next(this.isAuthenticated());
   }
@@ -29,7 +30,7 @@ export class AuthService {
       map(response => {
         if (response.token) {
           localStorage.setItem('loggedInUser', request.username);
-          localStorage.setItem(request.username, response.token);
+          this.setInStorage(response)
           this._isLoggedIn$.next(true);
           return response;
         }
@@ -37,12 +38,17 @@ export class AuthService {
     );
   }
 
+  setInStorage(res:IResponse){
+    if(res){
+      localStorage.setItem('authToken', res.token);
+    }
+  }
   logout(): void {
     const loggedInUser = localStorage.getItem('loggedInUser');
     if (loggedInUser) {
       localStorage.removeItem(loggedInUser);
     }
-    localStorage.removeItem('auth');
+    localStorage.removeItem('authToken');
     this._isLoggedIn$.next(false);
   }
 
