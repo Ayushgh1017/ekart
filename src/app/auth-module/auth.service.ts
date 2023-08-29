@@ -14,8 +14,9 @@ export class AuthService {
   private apiUrl = 'https://fakestoreapi.com/auth/login';
   private _isLoggedIn$ = new BehaviorSubject<boolean>(false);
   isLoggedIn$ = this._isLoggedIn$.asObservable();
-
   event = new EventEmitter<string>();
+
+  
   constructor(private http: HttpClient) {
     this._isLoggedIn$.next(this.isAuthenticated());
   }
