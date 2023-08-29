@@ -43,10 +43,12 @@ export class AuthService {
       localStorage.setItem('authToken', res.token);
     }
   }
+
+  
   logout(): void {
     const loggedInUser = localStorage.getItem('loggedInUser');
     if (loggedInUser) {
-      localStorage.removeItem(loggedInUser);
+      localStorage.removeItem('loggedInUser');
     }
     localStorage.removeItem('authToken');
     this._isLoggedIn$.next(false);
