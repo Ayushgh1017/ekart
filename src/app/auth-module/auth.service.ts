@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IResponse } from '../models/IResponse';
+import { IRequest } from '../models/IRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -21,16 +22,16 @@ export class AuthService {
     return !!username && localStorage.getItem(username) !== null;
   }
 
-  login(username: string, password: string): Observable<boolean> {
-    return this.http.post<any>(this.apiUrl, { username, password }).pipe(
+  login(request:IRequest): Observable<IResponse> {
+    let username = request.username;
+    let password = request.password;
+    return this.http.post<any>(this.apiUrl, {username,password }).pipe(
       map(response => {
         if (response.token) {
-          localStorage.setItem('loggedInUser', username);
-          localStorage.setItem(username, response.token);
+          localStorage.setItem('loggedInUser', request.username);
+          localStorage.setItem(request.username, response.token);
           this._isLoggedIn$.next(true);
-          return true;
-        } else {
-          return false;
+          return response;
         }
       })
     );

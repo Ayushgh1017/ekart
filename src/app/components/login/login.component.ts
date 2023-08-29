@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth-module/auth.service';
+import { IRequest } from 'src/app/models/IRequest';
 
 
 @Component({
@@ -24,13 +25,20 @@ export class LoginComponent {
     const username = this.form.get('username')?.value;
     const password = this.form.get('password')?.value;
 
+    let req: IRequest;
+
     if (!username ||!password) {
       return;
     }
 
-    this.authService.login(username, password).subscribe(success => {
+    req = {
+      username: username,
+      password: password
+    }
+    this.authService.login(req).subscribe(success => {
       if (success) {
         this.router.navigate(['/products']);
+        
       } else {
         this.router.navigate(['/login']);
       }
