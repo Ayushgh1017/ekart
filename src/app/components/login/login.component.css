@@ -60,3 +60,8 @@ button[type="submit"].mat-primary:hover {
   background-color: white;
   color: black;
 }
+
+.box{
+  display: flex; 
+  justify-content: center
+}

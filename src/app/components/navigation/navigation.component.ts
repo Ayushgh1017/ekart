@@ -12,8 +12,15 @@ export class NavigationComponent implements OnInit {
   constructor(private authService:AuthService, private router:Router) {}
 
   ngOnInit() {
-    this.userName = this.authService.getUsername();
+    this.getInfo();
+    console.log(this.userName);
   }
+  getInfo(){
+    this.authService.getUsername().subscribe(name=>{
+      this.userName = name
+    });
+  }
+  
   logout(): void {
     this.authService.logout();
     this.router.navigate(['/login']);
