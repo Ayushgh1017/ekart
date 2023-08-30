@@ -14,7 +14,7 @@ export class PaymentDetailsComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.paymentForm = this.fb.group({
-      cardNumber: ['', [Validators.required, Validators.minLength(16)]],
+      cardNumber: ['', [Validators.required, Validators.minLength(10)]],
       expirationDate: ['', [Validators.required]],
       cvv: ['', [Validators.required, Validators.minLength(3)]],
       paymentOption: ['credit', [Validators.required]]

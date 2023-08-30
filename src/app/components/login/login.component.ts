@@ -12,8 +12,8 @@ import { IRequest } from 'src/app/models/IRequest';
 })
 export class LoginComponent {
   form = new FormGroup({
-    username: new FormControl(null, Validators.required),
-    password: new FormControl(null, Validators.required),
+    username: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(16)]),
+    password: new FormControl(null, [Validators.required, Validators.minLength(4), Validators.maxLength(12)]),
   });
 
   constructor(private authService: AuthService, private router:Router) { }
